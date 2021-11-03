@@ -1,3 +1,4 @@
+//my word was bubbly
 let fishX = 0;
 let fishY = 0;
 let bubblesize =0;
@@ -8,7 +9,7 @@ let opacity
 function setup(){
 createCanvas(800,800);
 frameRate(6);
- paco=  new Cacoon(0,0,255);
+ paco=  new Cacoon(0,0);
 }
 
 function draw() {
@@ -53,7 +54,7 @@ fill(255,180);
 push();
 translate(fishX +70, fishY+ 25);
 scale(bubblesize);
-circle(fishX+5, fishY+5, 1);
+circle(fishX+5, fishY+5, 1);//the bubbles their making
 circle(fishX+10, fishY+10, 3);
 circle(fishX+15, fishY+15, 5);
 pop();
@@ -66,23 +67,23 @@ function fishHook(){
 }
 class Cacoon{//my cacoon
     
-  constructor (x,y, opacity){
+  constructor (x,y){
       this.cX = x;
       this.cY = y;
-      this.cOpacity = opacity;
+      this.cOpacity = 255;
   }
     display(){
         fill(34,97,34,this.cOpacity);
-        ellipse(this.cX+177, this.cY+287, 40, 100);
+        ellipse(this.cX+177, this.cY+287, 40, 100);//the actuall cacoon
     }
     
     shake(){
-        frameRate();
+        frameRate();//so that it moves faster again
         this.cX = this.cX + random(-2,2);
         this.cY = this.cY + random(-2,2);
     }
 disappear(){
-    this.cOpacity=0
+    this.cOpacity=0;
     //fill(34,97,34, 0);
    // ellipse(this.cX+177, this.cY+287, 40, 100);
 }
