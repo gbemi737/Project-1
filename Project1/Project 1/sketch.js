@@ -4,21 +4,26 @@ let fishY = 0;
 let bubblesize =0;
 let cY;
 let cX;
-let cOpacity;
-let opacity
+let cOpacity = 255;
+let opacity;
+let bX;
+let bY;
+
 function setup(){
 createCanvas(800,800);
 frameRate(6);
  paco=  new Cacoon(0,0);
+ paco2= new butterfly(0,0);  
 }
 
 function draw() {
 oceanWorld(); 
   paco.display();
-    if (millis()> 7000){
-       paco.disappear;
-        //cacoon disappears and butterfly apears and flys away
-        //paco.hide();
+    if (millis()> 7000){//cacoon disappears and butterfly apears and flys away
+       paco.disappear();
+        paco2.display();
+        paco2.fly();
+        
     }
     else{
         paco.shake();
@@ -70,7 +75,7 @@ class Cacoon{//my cacoon
   constructor (x,y){
       this.cX = x;
       this.cY = y;
-      this.cOpacity = 255;
+      this.cOpacity =255;
   }
     display(){
         fill(34,97,34,this.cOpacity);
@@ -82,15 +87,31 @@ class Cacoon{//my cacoon
         this.cX = this.cX + random(-2,2);
         this.cY = this.cY + random(-2,2);
     }
-disappear(){
-    this.cOpacity=0;
-    //fill(34,97,34, 0);
-   // ellipse(this.cX+177, this.cY+287, 40, 100);
+disappear(){//not actually disapeearing just getting transparent
+   this.cOpacity= this.cOpacity -30;
 }
 }
 
 
-//class butterfly{
-    //display
-  //  fly
-//}
+class butterfly{
+    constructor (x,y){
+     // this.x = x;
+      //this.y = y;
+        this.pos = createVector(x,y);
+        this.vel = createVector(4,7);
+    }
+    display(){
+        fill(57);
+        rect(this.pos.x+163,this.pos.y+217,5,55);//antennas
+        rect(this.pos.x+187,this.pos.y+217,5,55);
+        fill(36,97,34);
+        ellipse(this.pos.x+177,this.pos.y+287,60,80);
+        ellipse(this.pos.x+137,this.pos.y+267,60,80);
+         ellipse(this.pos.x+217,this.pos.y+267,60,80);
+         ellipse(this.pos.x+137,this.pos.y+297,50,60);
+        ellipse(this.pos.x+217,this.pos.y+297,50,60);
+    }
+ fly(){
+     this.pos.add(this.vel);
+ }
+}
