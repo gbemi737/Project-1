@@ -39,7 +39,7 @@ fish3.bubbles();
 fish4.bubbles();
 fish5.bubbles();
 fish6.bubbles();
-    if (millis()> 7000 && millis()<15000){//cacoon disappears and butterfly apears and flys away
+    if (millis()> 7000 ){//cacoon disappears and butterfly apears and flys away
        paco.disappear();
         paco2.display();
         paco2.fly();
@@ -49,10 +49,7 @@ fish6.bubbles();
         paco.shake();
         
     }
-    if(millis()>15000){
-       paco2.social();
-        //butterfly seeks cacoon
-}
+    
     
 }
 
@@ -193,7 +190,7 @@ class butterfly{
         ellipse(this.pos.x+217,this.pos.y+297,50,60);
     }
  fly(){
-     this.wingFly= this.wingFly + random(-3,4);//so it looks like the wings are fluttering
+     this.wingFly= this.wingFly + random(-3,3);//so it looks like the wings are fluttering
      if (this.wingFly>60){ 
         this.pos.sub(this.vel);//i just want a variation in the direction of the butterfly
     }
@@ -204,8 +201,10 @@ class butterfly{
  }
     
     social(){
-        let desired = p5.Vector.sub(360,this.pos);
-        let steering = p5.Vector.sub(desired,this.vel);
+       // let seek =
+        //this.pos.add(360);
+        let desired = this.pos.sub(360);//360 is the general area of one of the cluster of fish
+       let steering = this.desired.sub(this.vel);
         //make butterfly social by going to fish im not sure if im using p5. vector correctling but i was trying to use the steering concept
     }
 }
